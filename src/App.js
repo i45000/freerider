@@ -1,21 +1,44 @@
-import React ,{Component}from 'react';
-import {Header} from 'semantic-ui-react'
+import React from 'react';
 import Amplify from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react'
+import { AmplifyAuthenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
+import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
+import  Content from './Component/Content';
+import awsconfig from './aws-exports';
 import './App.css';
-
-import awsExports from "./aws-exports";
-Amplify.configure(awsExports);
+Amplify.configure(awsconfig);
 
 
-class App extends Component{
-render(){
-  return(
-    <div>
-    <Header as="h1">Hellow World</Header>
-    </div>
-    );
+
+const App = () => {
+  const [authState, setAuthState] = React.useState();
+  const [user, setUser] = React.useState();
+
+  React.useEffect(() => {
+    return onAuthUIStateChange((nextAuthState, authData) => {
+      setAuthState(nextAuthState);
+      setUser(authData)
+    });
+  }, []);
+
+  return authState === AuthState.SignedIn && user ? (
+    <div className="App">
+          <div class="topright2">Hello, {user.username}</div>
+         <div class="topright"> <AmplifySignOut /> </div>
+         <Content />
+         <h1>Hello</h1>
+      </div>
+  ) : (
+    <AmplifyAuthenticator>
+        <AmplifySignUp
+          slot="sign-up"
+          formFields={[
+            { type: "username" },
+            { type: "password" },
+            { type: "email" }
+          ]}
+        />
+      </AmplifyAuthenticator>
+  );
 }
-}
-export default withAuthenticator(App);
 
+export default App;
