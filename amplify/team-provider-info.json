@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reacthealthcare-dev-174633-authRole",
+      "UnauthRoleArn": "arn:aws:iam::190004100418:role/amplify-reacthealthcare-dev-174633-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::190004100418:role/amplify-reacthealthcare-dev-174633-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-reacthealthcare-dev-174633-deployment",
+      "UnauthRoleName": "amplify-reacthealthcare-dev-174633-unauthRole",
+      "StackName": "amplify-reacthealthcare-dev-174633",
+      "StackId": "arn:aws:cloudformation:us-east-1:190004100418:stack/amplify-reacthealthcare-dev-174633/a3452af0-4960-11ec-8153-0ae043511c03",
+      "AmplifyAppId": "d14dzco51t9cdq"
+    },
+    "categories": {
+      "auth": {
+        "reacthealthcare527a01e0": {}
+      }
+    }
+  }
+}
